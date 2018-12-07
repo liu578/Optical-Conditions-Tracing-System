@@ -1,0 +1,458 @@
+C51 COMPILER V9.50a   ________                                                             05/16/2015 02:46:03 PAGE 1   
+
+
+C51 COMPILER V9.50a, COMPILATION OF MODULE ________
+OBJECT MODULE PLACED IN 绘字系统.OBJ
+COMPILER INVOKED BY: C:\Program Files\keil\C51\C51\BIN\C51.EXE 绘字系统.c BROWSE DEBUG OBJECTEXTEND TABS(2)
+
+line level    source
+
+   1          #include"STC12C5A60S2.h" 
+   2          #include"74HC595.H"
+   3          #include"PWM.H"
+   4          #include<intrins.h> 
+   5          
+   6          #define u8 unsigned char
+   7          #define u16 unsigned int
+   8          ///////////AD宏定义
+   9          #define ADC_POWER 0x80 //AD电源控制
+  10          #define ADC_START 0x08 //AD转换控制
+  11          #define ADC_FLAG  0x10 //AD转换完成
+  12          #define Speed_0   0x00 //540 clk
+  13          #define Speed_1   0x20 //360 clk
+  14          #define Speed_2   0x40 //180 clk
+  15          #define Speed_3   0x60 //90  clk
+  16          #define ADC0      0x00 //P1.0
+  17          #define ADC1      0x01 //P1.1
+  18          #define ADC2      0x02 //P1.2
+  19          #define ADC3      0x03 //P1.3
+  20          #define ADC4      0x04 //P1.4
+  21          #define ADC5      0x05 //P1.5
+  22          #define ADC6      0x06 //P1.6
+  23          #define ADC7      0x07 //P1.7
+  24          
+  25          #define PWM_level_1 0x00
+  26          #define PWM_level_2 32
+  27          #define PWM_level_3 172
+  28          #define PWM_level_4 0xff
+  29          
+  30          sbit LED0=P4^4;
+  31          sbit LED1=P4^5;
+  32          sbit KEY0=P3^2;
+  33          sbit KEY1=P3^3;
+  34          sbit PWMpin= P1^3;
+  35          sbit ADpin=P1^0;
+  36          
+  37          //cd4051 数据选择端
+  38          sbit m1=P3^5;//a
+  39          sbit m2=P3^6;//b
+  40          sbit m3=P3^7;//c
+  41          //sbit inh1=P3^7;直接接地 
+  42          sbit n1=P1^5;//d
+  43          sbit n2=P1^6;//e
+  44          sbit n3=P1^7;//f
+  45          sbit inh2=P1^2;//接地
+  46          
+  47          u8 hang=0;
+  48          u8 lie =0;
+  49          bit temp1=0;
+  50          u8 temp2=0;
+  51          u8 temp3=0;
+  52          u8 k=0;
+  53          
+  54          u16 add=0;
+  55          u8 n=0;
+C51 COMPILER V9.50a   ________                                                             05/16/2015 02:46:03 PAGE 2   
+
+  56          
+  57          u8 PWM_level[]={PWM_level_1,PWM_level_2,PWM_level_3,PWM_level_4};
+  58          u8 pwmvalue= PWM_level_1;
+  59          u8 temp4=0;
+  60          u8 level=0x00;    //存储亮度等级
+  61          
+  62          //存储每一位的AD结果，值为0或1，0代表不亮,1代表亮
+  63          u8 result[8]={0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00};
+  64          
+  65          //点阵显示的 行码 列码
+  66          u8 liema[]={0xfe,0xfd,0xfb,0xf7,0xef,0xdf,0xbf,0x7f}; //点阵逐行扫描 列码
+  67          //u8 hang[]={0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00}; //行码
+  68          u8 hangma[]={0x44,0x4e,0xe4,0x5f,0xe4,0x4e,0x44,0x5f};/*"桂",0*/
+  69          
+  70          //1ms 延时程序
+  71          void delay1ms(void)  
+  72          {
+  73   1         u16 a=760;//默认工作在12T模式下
+  74   1         while(a--);
+  75   1      }
+  76          
+  77          //nms 延时程序
+  78          void delaynms(u16 nms)  //max 65536
+  79          {
+  80   1         while(nms--)
+  81   1         {
+  82   2             delay1ms();
+  83   2         }
+  84   1      }
+  85          //4051选择行程序
+  86          void choose_h(u8 num)
+  87          {
+  88   1      switch(num)
+  89   1            { 
+  90   2            
+  91   2            case 0: m3=0;m2=1;m1=1;break; //选通第一行
+  92   2            case 1: m3=0;m2=0;m1=0;break; //选通第二行
+  93   2            case 2: m3=0;m2=0;m1=1;break; //选通第三行
+  94   2            case 3: m3=0;m2=1;m1=0;break; //选通第四行
+  95   2            case 4: m3=1;m2=0;m1=1;break; //选通第五行
+  96   2            case 5: m3=1;m2=1;m1=1;break; //选通第六行
+  97   2            case 6: m3=1;m2=1;m1=0;break; //选通第七行
+  98   2            case 7: m3=1;m2=0;m1=0;break; //选通第八行  
+  99   2            default: break;
+ 100   2            }
+ 101   1      }
+ 102          //4051选通列程序
+ 103          void choose_l(u8 num)
+ 104          {
+ 105   1      switch(num)
+ 106   1            { 
+ 107   2            
+ 108   2            case 0: n3=0;n2=0;n1=0;break; //选通第一列
+ 109   2            case 1: n3=0;n2=0;n1=1;break; //选通第二列
+ 110   2            case 2: n3=0;n2=1;n1=0;break; //选通第三列
+ 111   2            case 3: n3=0;n2=1;n1=1;break; //选通第四列
+ 112   2            case 4: n3=1;n2=0;n1=0;break; //选通第五列
+ 113   2            case 5: n3=1;n2=0;n1=1;break; //选通第六列
+ 114   2            case 6: n3=1;n2=1;n1=0;break; //选通第七列
+ 115   2            case 7: n3=1;n2=1;n1=1;break; //选通第八列  
+ 116   2            default: break;
+ 117   2            }
+C51 COMPILER V9.50a   ________                                                             05/16/2015 02:46:03 PAGE 3   
+
+ 118   1      }
+ 119          
+ 120          
+ 121          //***********************************//
+ 122          //        按键  中断初始化         //
+ 123          //***********************************//
+ 124          void Intp_init(void)
+ 125          {
+ 126   1        
+ 127   1          KEY0=1;
+ 128   1          KEY1=1;
+ 129   1          IT0 = 1;   //外部中断源0为低电平触发  按键0     0:下降沿触发  1:低电平触发
+ 130   1          EX0 = 1;    //允许外部中断
+ 131   1        //  IT1=1;      //允许外中断1为低电平触发 按键1
+ 132   1      //    EX1=1;      //允许外部中断
+ 133   1          EA  = 1;    //开总中断  
+ 134   1      }
+ 135          
+ 136          //ad 初始化函数
+ 137          void adinit(void)
+ 138          {
+ 139   1          AUXR1     = 0x00;                 //转换结果高8位放在ADC_RES中,低2位放在ADC_RESL中
+ 140   1          P1ASF     = 0X01;                // 仅将P1.0作为模拟功能A/D使用
+ 141   1          ADC_RES   = 0x00;                   //结果清零
+ 142   1          //   ADC_RESL  = 0x00;                    //低两位结果清零
+ 143   1          ADC_CONTR = ADC_POWER|Speed_2|ADC0;   //打开电源,180CLK周期转换,选择P1.0作输入
+ 144   1          //POWER SPEED1 SPEED0 ADC_FLAG   ADC_START CHS2 CHS1 CHS0 
+ 145   1          _nop_();
+ 146   1          _nop_();
+ 147   1          _nop_();
+ 148   1          _nop_();
+ 149   1          _nop_();
+ 150   1      
+ 151   1      }
+ 152          
+ 153          
+ 154          //ad 转换程序
+ 155          u8 getad(void)
+ 156          {
+ 157   1          ADC_CONTR |= ADC_START;   //开始AD转换
+ 158   1        
+ 159   1          _nop_();
+ 160   1          _nop_();
+ 161   1          _nop_();
+ 162   1          _nop_();
+ 163   1          _nop_();
+ 164   1        
+ 165   1          while(!(ADC_CONTR&ADC_FLAG));//等待AD转换结束
+ 166   1          ADC_CONTR &=~ADC_FLAG ;//ADC_FLAG 软件置0
+ 167   1      
+ 168   1          _nop_();
+ 169   1          _nop_();
+ 170   1          _nop_();
+ 171   1          _nop_();
+ 172   1          _nop_();  
+ 173   1          return ADC_RES;
+ 174   1      
+ 175   1       //  EADC      = 1;                          //允许A/D转换中断
+ 176   1       //  EA        = 1;                          //开总中断
+ 177   1      }
+ 178          
+ 179          //ad取平均函数
+C51 COMPILER V9.50a   ________                                                             05/16/2015 02:46:03 PAGE 4   
+
+ 180          u8 adaverage(void)
+ 181          {
+ 182   1          u8 u=0;
+ 183   1          u16 adp=0x00;
+ 184   1        for(;u<10;u++)
+ 185   1        {
+ 186   2        adp=adp+getad();
+ 187   2        }
+ 188   1        return adp/10;
+ 189   1      }
+ 190          
+ 191          //亮与不亮判断函数
+ 192          bit lianganpanduan(u8 zhi)
+ 193          {
+ 194   1          if(zhi>0x60)
+ 195   1          return 1;
+ 196   1        else 
+ 197   1          return 0;
+ 198   1      
+ 199   1      }
+ 200          
+ 201          //等级判断函数
+ 202          u8 levelpanduan(u8 zhi)
+ 203          {
+ 204   1        if(zhi<0xb0)
+ 205   1          return 1;
+ 206   1        else 
+ 207   1          return 3;
+ 208   1      
+ 209   1      }
+ 210          
+ 211          
+ 212          
+ 213          //光阵列版扫描函数
+ 214          void saomiao(void)
+ 215          {
+ 216   1        hang=0;
+ 217   1        lie=0;
+ 218   1          for(;hang<=7;hang++)
+ 219   1        {
+ 220   2          lie=0;
+ 221   2          choose_h(hang);
+ 222   2          for(;lie<=7;lie++)
+ 223   2          {
+ 224   3            choose_l(lie);
+ 225   3            temp1=lianganpanduan(adaverage());
+ 226   3            temp2=(u8)temp1;
+ 227   3            temp3|=temp2<<(7-lie);
+ 228   3          } 
+ 229   2          result[hang]=temp3;
+ 230   2              temp3=0x00;
+ 231   2        
+ 232   2        }
+ 233   1      }
+ 234          //等级扫描函数
+ 235          u8 levelsaomiao(void)
+ 236          {
+ 237   1        hang=0;
+ 238   1        lie=0;
+ 239   1        n=0;
+ 240   1        add=0;
+ 241   1          for(;hang<=7;hang++)
+C51 COMPILER V9.50a   ________                                                             05/16/2015 02:46:03 PAGE 5   
+
+ 242   1        {
+ 243   2          lie=0;
+ 244   2          choose_h(hang);
+ 245   2          for(;lie<=7;lie++)
+ 246   2          {
+ 247   3            choose_l(lie);
+ 248   3            temp4=adaverage();
+ 249   3            if(lianganpanduan(temp4)==1)
+ 250   3            {n++;
+ 251   4            add+=temp4;
+ 252   4            }
+ 253   3            
+ 254   3          } 
+ 255   2        return add/n; 
+ 256   2        } 
+ 257   1      
+ 258   1      }
+ 259          
+ 260          
+ 261          void PWM_clock(u8 clock)
+ 262          { 
+ 263   1      CMOD |= (clock<<1);
+ 264   1      CL = 0x00;
+ 265   1      CH = 0x00;
+ 266   1      }
+ 267          
+ 268          void PWM_start(u8 mat,u8 module,u8 mode) 
+ 269          {
+ 270   1        CCAP0L = mat;
+ 271   1        CCAP0H = mat;   //模块0初始输出 占空因数为25%
+ 272   1        CCAP1L = mat;
+ 273   1        CCAP1H = mat;   //模块1初始输出 占空因数为25%
+ 274   1        
+ 275   1        if(module==0)
+ 276   1           {
+ 277   2            switch(mode)
+ 278   2              { 
+ 279   3           case 0: CCAPM0 = 0X42;break; //模块0设置为8位PWM输出，无中断
+ 280   3           case 1: CCAPM0 = 0X53;break; //模块0设置为8位PWM输出，下降沿产生中断
+ 281   3           case 2: CCAPM0 = 0X63;break; //模块0设置为8位PWM输出，上升沿产生中断
+ 282   3           case 3: CCAPM0 = 0X73;break; //模块0设置为8位PWM输出，跳变沿产生中断
+ 283   3           default: break;
+ 284   3              }
+ 285   2            }
+ 286   1        else
+ 287   1        if(module==1)
+ 288   1           {
+ 289   2            switch(mode)
+ 290   2             { 
+ 291   3         case 0: CCAPM1 = 0X42;break; //模块1设置为8位PWM输出，无中断
+ 292   3         case 1: CCAPM1 = 0X53;break; //模块1设置为8位PWM输出，下降沿产生中断
+ 293   3         case 2: CCAPM1 = 0X63;break; //模块1设置为8位PWM输出，上升沿产生中断
+ 294   3         case 3: CCAPM1 = 0X73;break; //模块1设置为8位PWM输出，跳变沿产生中断
+ 295   3         default: break;
+ 296   3              }
+ 297   2          }
+ 298   1        else
+ 299   1        if(module==2)
+ 300   1          {
+ 301   2              switch(mode)
+ 302   2            { 
+ 303   3            case 0: CCAPM0 = CCAPM1 = 0X42;break; //模块0和1设置为8位PWM输出，无中断
+C51 COMPILER V9.50a   ________                                                             05/16/2015 02:46:03 PAGE 6   
+
+ 304   3            case 1: CCAPM0 = CCAPM1 = 0X53;break; //模块0和1设置为8位PWM输出，下降沿产生中断
+ 305   3            case 2: CCAPM0 = CCAPM1 = 0X63;break; //模块0和1设置为8位PWM输出，上升沿产生中断
+ 306   3            case 3: CCAPM0 = CCAPM1 = 0X73;break; //模块0和1设置为8位PWM输出，跳变沿产生中断
+ 307   3            default: break;
+ 308   3            }
+ 309   2          }
+ 310   1        CR=1; //PCA计数器开始计数
+ 311   1          
+ 312   1      }
+ 313            void main()
+ 314          {
+ 315   1      
+ 316   1        P4SW=0XFF;      //把P4设置为普通IO口
+ 317   1        P4M1=0X01;
+ 318   1        P4M0=0X00;
+ 319   1        
+ 320   1        Intp_init();             //按键外中断0、1初始化
+ 321   1        adinit();               //ad 初始化
+ 322   1        
+ 323   1        inh2=0;         //cd4051 使能
+ 324   1        
+ 325   1        
+ 326   1        TMOD|=0x02; /* timer 0 mode 2: 8-Bit reload */ 
+ 327   1        TH0=0xff;
+ 328   1        TR0=1;     
+ 329   1        PWM_clock(2);      // PCA/PWM时钟源为 定时器0的溢出
+ 330   1        
+ 331   1        PWM_start(pwmvalue,2,0); // 模块0,设置为PWM输出,无中断,初始占空因素为25%
+ 332   1          
+ 333   1        while(1)
+ 334   1        {
+ 335   2        
+ 336   2        Ser_IN(liema[k]);
+ 337   2        Ser_IN(result[k]);  
+ 338   2        Par_OUT();
+ 339   2          
+ 340   2          k++;  
+ 341   2          if(k==8)
+ 342   2          k=0;    
+ 343   2        }
+ 344   1      }
+ 345          
+ 346          //******************************************//
+ 347          //               A/D中断服务            //
+ 348          //******************************************//
+ 349          // void AD_Service(void) interrupt 5
+ 350          // {
+ 351          //     ADC_CONTR &= !ADC_FLAG; //清标志
+ 352          //    ADC_CONTR &= !ADC_START;// 关闭AD转换
+ 353          //    _nop_();
+ 354          //     _nop_();
+ 355          //    _nop_();
+ 356          //     _nop_();
+ 357          //  
+ 358          //    value=ADC_RES*256+ADC_RESL;
+ 359          //     ADC_RES   = 0x00;
+ 360          //     ADC_RESL  = 0x00;
+ 361          //  if(value>200){
+ 362          //    PWM_start(0x40,2,0); // 模块0,设置为PWM输出,无中断,初始占空因素为25%
+ 363          //    LED1=!LED1;}
+ 364          //  if(value<200){
+ 365          //    PWM_start(0x80,2,0); // 模块0,设置为PWM输出,无中断,初始占空因素为25%
+C51 COMPILER V9.50a   ________                                                             05/16/2015 02:46:03 PAGE 7   
+
+ 366          //    LED2=!LED2;}
+ 367          
+ 368          //     ADC_CONTR = ADC_POWER|Speed_2|ADC_START; //开始下一次转换   
+ 369          //     _nop_();
+ 370          //     _nop_();
+ 371          //     _nop_();
+ 372          //     _nop_();
+ 373          //  
+ 374          // }
+ 375          
+ 376          //按键0 中断函数
+ 377          void INT0_Service(void) interrupt 0
+ 378          {
+ 379   1        EX0=0;
+ 380   1        while(!KEY1);
+ 381   1        LED0=0;
+ 382   1        saomiao();
+ 383   1        level=levelpanduan(levelsaomiao());
+ 384   1        pwmvalue=PWM_level[level];
+ 385   1        PWM_start(pwmvalue,2,0);
+ 386   1        LED0=1;
+ 387   1        EX0=1;
+ 388   1        
+ 389   1          
+ 390   1      }
+ 391          // //按键1 中断函数
+ 392          // void INT1_Service(void) interrupt 2
+ 393          // {
+ 394          //  
+ 395          //  u8 lp=level;
+ 396          //  u8 kk=0;
+ 397          //  delaynms(30);
+ 398          //  EX1=0;
+ 399          // //LED1=0;
+ 400          //  while(!KEY0)
+ 401          //  {
+ 402          //      Ser_IN(liema[kk]);
+ 403          //      switch(lp)
+ 404          //      {
+ 405          //         case 0: Ser_IN(d0[kk]);  break; 
+ 406          //         case 1: Ser_IN(d1[kk]);  break; 
+ 407          //         case 2: Ser_IN(d2[kk]);  break; 
+ 408          //         case 3: Ser_IN(d3[kk]);  break; 
+ 409          //         case 4: Ser_IN(d4[kk]);  break; 
+ 410          //         default: break;
+ 411          //      }
+ 412          //      Par_OUT();
+ 413          //      kk++; 
+ 414          //      if(kk==8)
+ 415          //      kk=0; 
+ 416          //      LED1=0;
+ 417          //  }
+ 418          //  EX1=1;
+ 419          // // LED1=1;
+ 420          // }
+*** WARNING C291 IN LINE 258 OF 绘字系统.c: not every exit path returns a value
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    769    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+C51 COMPILER V9.50a   ________                                                             05/16/2015 02:46:03 PAGE 8   
+
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     39    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =      1    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  1 WARNING(S),  0 ERROR(S)

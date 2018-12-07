@@ -1,0 +1,33 @@
+Removed Pin From Net: NetName=INH Pin=P1s-5
+Removed Pin From Net: NetName=INH Pin=P1x-5
+Change Component DesignItemId : Designator=HCF4051 Old DesignItemId=405 New DesignItemId=4051
+Change Component Description : Designator=J1 Old Description=Connec New Description=Connector
+Change Component Description : Designator=J2 Old Description=Connec New Description=Connector
+Change Component Description : Designator=P1s Old Description=Connec New Description=Connector
+Change Component Description : Designator=P1x Old Description=Connec New Description=Connector
+Added Component: Designator=C1(CAO1)
+Added Component: Designator=C2(C0805)
+Added Component: Designator=C3(C0805)
+Added Component: Designator=V1(SOT-223)
+Added Pin To Net: NetName=GND Pin=C1-2
+Added Pin To Net: NetName=GND Pin=C2-1
+Added Pin To Net: NetName=VCC Pin=C2-2
+Added Pin To Net: NetName=GND Pin=C3-1
+Added Pin To Net: NetName=INH Pin=P1s-3
+Added Pin To Net: NetName=INH Pin=P1x-3
+Added Pin To Net: NetName=GND Pin=V1-1
+Added Pin To Net: NetName=VCC Pin=V1-3
+Added Pin To Net: NetName=3.3V Pin=C1-1
+Added Pin To Net: NetName=3.3V Pin=C3-2
+Added Pin To Net: NetName=3.3V Pin=P1s-2
+Added Pin To Net: NetName=3.3V Pin=P1x-2
+Added Pin To Net: NetName=3.3V Pin=V1-2
+Added Net: Name=3.3V
+Added Pin To Net: NetName=NetP1s_5 Pin=P1s-5
+Added Pin To Net: NetName=NetP1s_5 Pin=P1x-5
+Added Net: Name=NetP1s_5
+Added Member To Class: ClassName=HCF4051 Member=Component C1 220uF
+Added Member To Class: ClassName=HCF4051 Member=Component C2 104
+Added Member To Class: ClassName=HCF4051 Member=Component C3 104
+Added Member To Class: ClassName=HCF4051 Member=Component V1 TLV1117
+Added Room: Name=HCF4051

@@ -1,0 +1,8 @@
+Added Component: Designator=J1(sip-6)
+Added Pin To Net: NetName=VCC Pin=J1-1
+Added Pin To Net: NetName=DATA IN Pin=J1-2
+Added Pin To Net: NetName=S CLK Pin=J1-3
+Added Pin To Net: NetName=R CLK Pin=J1-4
+Added Pin To Net: NetName=PWM Pin=J1-5
+Added Pin To Net: NetName=GND Pin=J1-6
+Added Member To Class: ClassName=µ„’Û Member=Component J1 CON6

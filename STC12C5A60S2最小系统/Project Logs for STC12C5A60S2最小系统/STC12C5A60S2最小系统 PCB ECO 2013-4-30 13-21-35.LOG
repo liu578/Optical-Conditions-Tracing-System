@@ -1,0 +1,9 @@
+Removed Pin From Net: NetName=VCC Pin=C2-2
+Removed Pin From Net: NetName=VCC Pin=C3-1
+Removed Pin From Net: NetName=VCC Pin=J2-2
+Removed Pin From Net: NetName=VCC Pin=J4-2
+Added Pin To Net: NetName=+5V Pin=C2-2
+Added Pin To Net: NetName=+5V Pin=C3-1
+Added Pin To Net: NetName=+5V Pin=J2-2
+Added Pin To Net: NetName=+5V Pin=J4-2
+Added Room: Name=STC12C5A60S2最小系统

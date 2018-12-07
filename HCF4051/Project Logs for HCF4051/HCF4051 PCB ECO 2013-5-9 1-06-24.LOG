@@ -1,0 +1,37 @@
+Added Component: Designator=HCF4051(SOP-16)
+Added Component: Designator=J1(sip-10)
+Added Component: Designator=J?(sip-2)
+Added Component: Designator=J?(sip-2)
+Added Component: Designator=P1s(sip-8)
+Added Component: Designator=P1x(sip-8)
+Added Pin To Net: NetName=ADC0 Pin=HCF4051-3
+Added Pin To Net: NetName=ADC0 Pin=P1s-1
+Added Pin To Net: NetName=ADC0 Pin=P1x-1
+Added Net: Name=ADC0
+Added Pin To Net: NetName=D Pin=HCF4051-11
+Added Pin To Net: NetName=D Pin=P1s-6
+Added Pin To Net: NetName=D Pin=P1x-6
+Added Net: Name=D
+Added Pin To Net: NetName=E Pin=HCF4051-10
+Added Pin To Net: NetName=E Pin=P1s-7
+Added Pin To Net: NetName=E Pin=P1x-7
+Added Net: Name=E
+Added Pin To Net: NetName=F Pin=HCF4051-9
+Added Pin To Net: NetName=F Pin=P1s-8
+Added Pin To Net: NetName=F Pin=P1x-8
+Added Net: Name=F
+Added Pin To Net: NetName=GND Pin=HCF4051-6
+Added Pin To Net: NetName=GND Pin=HCF4051-7
+Added Pin To Net: NetName=GND Pin=HCF4051-8
+Added Pin To Net: NetName=GND Pin=J?-2
+Added Pin To Net: NetName=GND Pin=J?-2
+Added Net: Name=GND
+Added Pin To Net: NetName=PWM Pin=P1s-4
+Added Pin To Net: NetName=PWM Pin=P1x-4
+Added Net: Name=PWM
+Added Pin To Net: NetName=VCC Pin=HCF4051-16
+Added Pin To Net: NetName=VCC Pin=J?-1
+Added Pin To Net: NetName=VCC Pin=J?-1
+Added Net: Name=VCC
+Added Class: Name=HCF4051
+Added Room: Name=HCF4051

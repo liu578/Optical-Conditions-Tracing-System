@@ -1,0 +1,18 @@
+Change Component Designator: OldDesignator=LED£¿ NewDesignator=Ë«É«µãÕó
+Change Net Name : Old Net Name=NetLED£¿_1 New Net Name=NetU1_7
+Change Net Name : Old Net Name=NetLED£¿_2 New Net Name=NetU1_6
+Change Net Name : Old Net Name=NetLED£¿_3 New Net Name=NetU1_5
+Change Net Name : Old Net Name=NetLED£¿_4 New Net Name=NetU1_4
+Change Net Name : Old Net Name=NetLED£¿_13 New Net Name=NetU2_7
+Change Net Name : Old Net Name=NetLED£¿_14 New Net Name=NetU2_6
+Change Net Name : Old Net Name=NetLED£¿_15 New Net Name=NetU2_5
+Change Net Name : Old Net Name=NetLED£¿_16 New Net Name=NetU2_4
+Change Net Name : Old Net Name=NetLED£¿_17 New Net Name=NetU2_3
+Change Net Name : Old Net Name=NetLED£¿_18 New Net Name=NetU2_2
+Change Net Name : Old Net Name=NetLED£¿_19 New Net Name=NetU2_1
+Change Net Name : Old Net Name=NetLED£¿_20 New Net Name=NetU2_15
+Change Net Name : Old Net Name=NetLED£¿_21 New Net Name=NetU1_3
+Change Net Name : Old Net Name=NetLED£¿_22 New Net Name=NetU1_2
+Change Net Name : Old Net Name=NetLED£¿_23 New Net Name=NetU1_1
+Change Net Name : Old Net Name=NetLED£¿_24 New Net Name=NetU1_15
+Added Room: Name=µãÕó

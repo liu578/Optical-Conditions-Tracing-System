@@ -1,0 +1,9 @@
+Removed Pin From Net: NetName=DATA IN Pin=J1-2
+Removed Pin From Net: NetName=S CLK Pin=J1-3
+Removed Pin From Net: NetName=R CLK Pin=J1-4
+Removed Pin From Net: NetName=PWM Pin=J1-5
+Added Pin To Net: NetName=S CLK Pin=J1-2
+Added Pin To Net: NetName=R CLK Pin=J1-3
+Added Pin To Net: NetName=PWM Pin=J1-4
+Added Pin To Net: NetName=DATA IN Pin=J1-5
+Added Room: Name=µ„’Û

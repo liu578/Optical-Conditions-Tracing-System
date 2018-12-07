@@ -1,0 +1,5 @@
+Removed Pin From Net: NetName=RST Pin=R1-2
+Removed Member From Class: ClassName=STC12C5A60S2最小系统 Member=R1
+Added Pin To Net: NetName=RST Pin=S1-1
+Added Pin To Net: NetName=RST Pin=S1-1
+Added Room: Name=STC12C5A60S2最小系统

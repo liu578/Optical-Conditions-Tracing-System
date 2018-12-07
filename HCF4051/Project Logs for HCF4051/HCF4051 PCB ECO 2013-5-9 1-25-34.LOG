@@ -1,0 +1,9 @@
+Removed Pin From Net: NetName=INH Pin=HCF4051-6
+Removed Pin From Net: NetName=INH Pin=P1s-5
+Removed Pin From Net: NetName=INH Pin=P1x-5
+Change Net Name : Old Net Name=INH New Net Name=GND
+Added Pin To Net: NetName=INH Pin=HCF4051-6
+Added Pin To Net: NetName=INH Pin=P1s-5
+Added Pin To Net: NetName=INH Pin=P1x-5
+Added Net: Name=INH
+Added Room: Name=HCF4051

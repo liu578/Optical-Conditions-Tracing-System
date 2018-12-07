@@ -1,0 +1,75 @@
+Added Component: Designator=LED？(双色点阵)
+Added Component: Designator=U1(DIP-16)
+Added Component: Designator=U2(DIP-16)
+Added Pin To Net: NetName=DATA IN Pin=U1-14
+Added Net: Name=DATA IN
+Added Pin To Net: NetName=GND Pin=U1-8
+Added Pin To Net: NetName=GND Pin=U2-8
+Added Net: Name=GND
+Added Pin To Net: NetName=NetLED？_1 Pin=LED？-1
+Added Pin To Net: NetName=NetLED？_1 Pin=U1-7
+Added Net: Name=NetLED？_1
+Added Pin To Net: NetName=NetLED？_2 Pin=LED？-2
+Added Pin To Net: NetName=NetLED？_2 Pin=U1-6
+Added Net: Name=NetLED？_2
+Added Pin To Net: NetName=NetLED？_3 Pin=LED？-3
+Added Pin To Net: NetName=NetLED？_3 Pin=U1-5
+Added Net: Name=NetLED？_3
+Added Pin To Net: NetName=NetLED？_4 Pin=LED？-4
+Added Pin To Net: NetName=NetLED？_4 Pin=U1-4
+Added Net: Name=NetLED？_4
+Added Pin To Net: NetName=NetLED？_13 Pin=LED？-13
+Added Pin To Net: NetName=NetLED？_13 Pin=U2-7
+Added Net: Name=NetLED？_13
+Added Pin To Net: NetName=NetLED？_14 Pin=LED？-14
+Added Pin To Net: NetName=NetLED？_14 Pin=U2-6
+Added Net: Name=NetLED？_14
+Added Pin To Net: NetName=NetLED？_15 Pin=LED？-15
+Added Pin To Net: NetName=NetLED？_15 Pin=U2-5
+Added Net: Name=NetLED？_15
+Added Pin To Net: NetName=NetLED？_16 Pin=LED？-16
+Added Pin To Net: NetName=NetLED？_16 Pin=U2-4
+Added Net: Name=NetLED？_16
+Added Pin To Net: NetName=NetLED？_17 Pin=LED？-17
+Added Pin To Net: NetName=NetLED？_17 Pin=U2-3
+Added Net: Name=NetLED？_17
+Added Pin To Net: NetName=NetLED？_18 Pin=LED？-18
+Added Pin To Net: NetName=NetLED？_18 Pin=U2-2
+Added Net: Name=NetLED？_18
+Added Pin To Net: NetName=NetLED？_19 Pin=LED？-19
+Added Pin To Net: NetName=NetLED？_19 Pin=U2-1
+Added Net: Name=NetLED？_19
+Added Pin To Net: NetName=NetLED？_20 Pin=LED？-20
+Added Pin To Net: NetName=NetLED？_20 Pin=U2-15
+Added Net: Name=NetLED？_20
+Added Pin To Net: NetName=NetLED？_21 Pin=LED？-21
+Added Pin To Net: NetName=NetLED？_21 Pin=U1-3
+Added Net: Name=NetLED？_21
+Added Pin To Net: NetName=NetLED？_22 Pin=LED？-22
+Added Pin To Net: NetName=NetLED？_22 Pin=U1-2
+Added Net: Name=NetLED？_22
+Added Pin To Net: NetName=NetLED？_23 Pin=LED？-23
+Added Pin To Net: NetName=NetLED？_23 Pin=U1-1
+Added Net: Name=NetLED？_23
+Added Pin To Net: NetName=NetLED？_24 Pin=LED？-24
+Added Pin To Net: NetName=NetLED？_24 Pin=U1-15
+Added Net: Name=NetLED？_24
+Added Pin To Net: NetName=NetU1_9 Pin=U1-9
+Added Pin To Net: NetName=NetU1_9 Pin=U2-14
+Added Net: Name=NetU1_9
+Added Pin To Net: NetName=PWM Pin=U1-13
+Added Pin To Net: NetName=PWM Pin=U2-13
+Added Net: Name=PWM
+Added Pin To Net: NetName=R CLK Pin=U1-12
+Added Pin To Net: NetName=R CLK Pin=U2-12
+Added Net: Name=R CLK
+Added Pin To Net: NetName=S CLK Pin=U1-11
+Added Pin To Net: NetName=S CLK Pin=U2-11
+Added Net: Name=S CLK
+Added Pin To Net: NetName=VCC Pin=U1-10
+Added Pin To Net: NetName=VCC Pin=U1-16
+Added Pin To Net: NetName=VCC Pin=U2-10
+Added Pin To Net: NetName=VCC Pin=U2-16
+Added Net: Name=VCC
+Added Class: Name=点阵
+Added Room: Name=点阵

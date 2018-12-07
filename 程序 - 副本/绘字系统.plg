@@ -1,0 +1,298 @@
+<html>
+<body>
+<pre>
+<h1>礦ision Build Log</h1>
+<h2>Project:</h2>
+D:\Users\leo\我的工作台\dxp\广西区赛\绘字系统\程序 - 副本\绘字系统.uvproj
+Project File Date:  05/09/2013
+
+<h2>Output:</h2>
+Rebuild target 'Target 1'
+compiling 绘字系统.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_V_LCD12864DRAWPICTURE_F?________
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?INTP_INIT?________
+Program Size: data=14.0 xdata=0 code=521
+creating hex file from "绘字系统"...
+"绘字系统" - 0 Error(s), 2 Warning(s).
+Rebuild target 'Target 1'
+compiling 绘字系统.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_V_LCD12864DRAWPICTURE_F?________
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?INTP_INIT?________
+Program Size: data=14.0 xdata=0 code=521
+creating hex file from "绘字系统"...
+"绘字系统" - 0 Error(s), 2 Warning(s).
+Rebuild target 'Target 1'
+compiling 绘字系统.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_V_LCD12864DRAWPICTURE_F?________
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?INTP_INIT?________
+Program Size: data=14.0 xdata=0 code=521
+creating hex file from "绘字系统"...
+"绘字系统" - 0 Error(s), 2 Warning(s).
+Rebuild target 'Target 1'
+compiling 绘字系统.c...
+绘字系统.c(160): error C100: unprintable character 0xA1 skipped
+Target not created
+Rebuild target 'Target 1'
+compiling 绘字系统.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_V_LCD12864DRAWPICTURE_F?________
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?INTP_INIT?________
+Program Size: data=14.0 xdata=0 code=529
+creating hex file from "绘字系统"...
+"绘字系统" - 0 Error(s), 2 Warning(s).
+Rebuild target 'Target 1'
+compiling 绘字系统.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_V_LCD12864DRAWPICTURE_F?________
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?INTP_INIT?________
+Program Size: data=14.0 xdata=0 code=516
+creating hex file from "绘字系统"...
+"绘字系统" - 0 Error(s), 2 Warning(s).
+Rebuild target 'Target 1'
+compiling 绘字系统.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_V_LCD12864DRAWPICTURE_F?________
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?INTP_INIT?________
+Program Size: data=14.0 xdata=0 code=516
+creating hex file from "绘字系统"...
+"绘字系统" - 0 Error(s), 2 Warning(s).
+Rebuild target 'Target 1'
+compiling 绘字系统.c...
+绘字系统.c(22): error C141: syntax error near 'dat_comm', expected ')'
+绘字系统.c(24): error C141: syntax error near 'us', expected ')'
+绘字系统.c(26): error C129: missing ';' before 'code'
+Target not created
+Rebuild target 'Target 1'
+compiling 绘字系统.c...
+linking...
+Program Size: data=11.3 xdata=0 code=356
+creating hex file from "绘字系统"...
+"绘字系统" - 0 Error(s), 0 Warning(s).
+Rebuild target 'Target 1'
+compiling 绘字系统.c...
+linking...
+Program Size: data=11.3 xdata=0 code=356
+creating hex file from "绘字系统"...
+"绘字系统" - 0 Error(s), 0 Warning(s).
+Rebuild target 'Target 1'
+compiling 绘字系统.c...
+绘字系统.c(98): error C202: 'T2CON': undefined identifier
+绘字系统.c(99): error C202: 'TH2': undefined identifier
+绘字系统.c(100): error C202: 'TL2': undefined identifier
+绘字系统.c(101): error C202: 'ET2': undefined identifier
+绘字系统.c(103): error C202: 'TR2': undefined identifier
+绘字系统.c(125): error C202: 'TR2': undefined identifier
+绘字系统.c(126): error C202: 'TF2': undefined identifier
+绘字系统.c(127): error C202: 'TH2': undefined identifier
+绘字系统.c(128): error C202: 'TL2': undefined identifier
+绘字系统.c(153): error C202: 'TR2': undefined identifier
+Target not created
+Rebuild target 'Target 1'
+compiling 绘字系统.c...
+绘字系统.c(98): error C202: 'T2CON': undefined identifier
+绘字系统.c(99): error C202: 'TH2': undefined identifier
+绘字系统.c(100): error C202: 'TL2': undefined identifier
+绘字系统.c(101): error C202: 'ET2': undefined identifier
+绘字系统.c(103): error C202: 'TR2': undefined identifier
+绘字系统.c(125): error C202: 'TR2': undefined identifier
+绘字系统.c(126): error C202: 'TF2': undefined identifier
+绘字系统.c(127): error C202: 'TH2': undefined identifier
+绘字系统.c(128): error C202: 'TL2': undefined identifier
+绘字系统.c(153): error C202: 'TR2': undefined identifier
+Target not created
+Rebuild target 'Target 1'
+compiling 绘字系统.c...
+绘字系统.c(98): error C202: 'T2CON': undefined identifier
+绘字系统.c(99): error C202: 'TH2': undefined identifier
+绘字系统.c(100): error C202: 'TL2': undefined identifier
+绘字系统.c(101): error C202: 'ET2': undefined identifier
+绘字系统.c(103): error C202: 'TR2': undefined identifier
+绘字系统.c(126): error C202: 'TR2': undefined identifier
+绘字系统.c(127): error C202: 'TF2': undefined identifier
+绘字系统.c(128): error C202: 'TH2': undefined identifier
+绘字系统.c(129): error C202: 'TL2': undefined identifier
+绘字系统.c(154): error C202: 'TR2': undefined identifier
+Target not created
+Rebuild target 'Target 1'
+compiling 绘字系统.c...
+绘字系统.c(98): error C202: 'T2CON': undefined identifier
+绘字系统.c(99): error C202: 'TH2': undefined identifier
+绘字系统.c(100): error C202: 'TL2': undefined identifier
+绘字系统.c(101): error C202: 'ET2': undefined identifier
+绘字系统.c(103): error C202: 'TR2': undefined identifier
+Target not created
+Rebuild target 'Target 1'
+compiling 绘字系统.c...
+绘字系统.c(98): error C202: 'T1CON': undefined identifier
+Target not created
+Rebuild target 'Target 1'
+compiling 绘字系统.c...
+linking...
+Program Size: data=15.3 xdata=0 code=423
+creating hex file from "绘字系统"...
+"绘字系统" - 0 Error(s), 0 Warning(s).
+Rebuild target 'Target 1'
+compiling 绘字系统.c...
+linking...
+Program Size: data=15.3 xdata=0 code=425
+creating hex file from "绘字系统"...
+"绘字系统" - 0 Error(s), 0 Warning(s).
+Rebuild target 'Target 1'
+compiling 绘字系统.c...
+linking...
+Program Size: data=15.3 xdata=0 code=427
+creating hex file from "绘字系统"...
+"绘字系统" - 0 Error(s), 0 Warning(s).
+Rebuild target 'Target 1'
+compiling 绘字系统.c...
+linking...
+Program Size: data=15.3 xdata=0 code=425
+creating hex file from "绘字系统"...
+"绘字系统" - 0 Error(s), 0 Warning(s).
+Rebuild target 'Target 1'
+compiling 绘字系统.c...
+linking...
+Program Size: data=15.3 xdata=0 code=427
+creating hex file from "绘字系统"...
+"绘字系统" - 0 Error(s), 0 Warning(s).
+Rebuild target 'Target 1'
+compiling 绘字系统.c...
+linking...
+Program Size: data=15.3 xdata=0 code=427
+creating hex file from "绘字系统"...
+"绘字系统" - 0 Error(s), 0 Warning(s).
+Rebuild target 'Target 1'
+compiling 绘字系统.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?SCAN_ENCODER?________
+Program Size: data=15.3 xdata=0 code=391
+creating hex file from "绘字系统"...
+"绘字系统" - 0 Error(s), 1 Warning(s).
+Rebuild target 'Target 1'
+compiling 绘字系统.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?SCAN_ENCODER?________
+Program Size: data=15.3 xdata=0 code=391
+creating hex file from "绘字系统"...
+"绘字系统" - 0 Error(s), 1 Warning(s).
+Rebuild target 'Target 1'
+compiling 绘字系统.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?SCAN_ENCODER?________
+Program Size: data=15.3 xdata=0 code=391
+creating hex file from "绘字系统"...
+"绘字系统" - 0 Error(s), 1 Warning(s).
+Rebuild target 'Target 1'
+compiling 绘字系统.c...
+绘字系统.c(120): error C141: syntax error near 'BMC', expected '('
+绘字系统.c(121): error C141: syntax error near 'LED'
+Target not created
+Rebuild target 'Target 1'
+compiling 绘字系统.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?SCAN_ENCODER?________
+Program Size: data=15.3 xdata=0 code=394
+creating hex file from "绘字系统"...
+"绘字系统" - 0 Error(s), 1 Warning(s).
+Rebuild target 'Target 1'
+compiling 绘字系统.c...
+绘字系统.c(121): error C141: syntax error near '^'
+Target not created
+Rebuild target 'Target 1'
+compiling 绘字系统.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?SCAN_ENCODER?________
+Program Size: data=15.3 xdata=0 code=394
+creating hex file from "绘字系统"...
+"绘字系统" - 0 Error(s), 1 Warning(s).
+Rebuild target 'Target 1'
+compiling 绘字系统.c...
+绘字系统.c(10): error C144: base^pos: invalid bit position
+绘字系统.c(27): error C202: 'io_LCD12864_EN': undefined identifier
+绘字系统.c(28): error C202: 'io_LCD12864_EN': undefined identifier
+绘字系统.c(30): error C202: 'io_LCD12864_EN': undefined identifier
+绘字系统.c(40): error C202: 'io_LCD12864_EN': undefined identifier
+绘字系统.c(44): error C202: 'io_LCD12864_EN': undefined identifier
+绘字系统.c(47): error C202: 'io_LCD12864_EN': undefined identifier
+绘字系统.c(56): error C202: 'io_LCD12864_EN': undefined identifier
+绘字系统.c(60): error C202: 'io_LCD12864_EN': undefined identifier
+绘字系统.c(63): error C202: 'io_LCD12864_EN': undefined identifier
+Target not created
+Rebuild target 'Target 1'
+compiling 绘字系统.c...
+绘字系统.c(10): error C144: base^pos: invalid bit position
+绘字系统.c(27): error C202: 'io_LCD12864_EN': undefined identifier
+绘字系统.c(28): error C202: 'io_LCD12864_EN': undefined identifier
+绘字系统.c(30): error C202: 'io_LCD12864_EN': undefined identifier
+绘字系统.c(40): error C202: 'io_LCD12864_EN': undefined identifier
+绘字系统.c(44): error C202: 'io_LCD12864_EN': undefined identifier
+绘字系统.c(47): error C202: 'io_LCD12864_EN': undefined identifier
+绘字系统.c(56): error C202: 'io_LCD12864_EN': undefined identifier
+绘字系统.c(60): error C202: 'io_LCD12864_EN': undefined identifier
+绘字系统.c(63): error C202: 'io_LCD12864_EN': undefined identifier
+Target not created
+Rebuild target 'Target 1'
+compiling 绘字系统.c...
+绘字系统.c(10): error C144: base^pos: invalid bit position
+绘字系统.c(26): error C202: 'io_LCD12864_EN': undefined identifier
+绘字系统.c(27): error C202: 'io_LCD12864_EN': undefined identifier
+绘字系统.c(29): error C202: 'io_LCD12864_EN': undefined identifier
+绘字系统.c(39): error C202: 'io_LCD12864_EN': undefined identifier
+绘字系统.c(43): error C202: 'io_LCD12864_EN': undefined identifier
+绘字系统.c(46): error C202: 'io_LCD12864_EN': undefined identifier
+绘字系统.c(55): error C202: 'io_LCD12864_EN': undefined identifier
+绘字系统.c(59): error C202: 'io_LCD12864_EN': undefined identifier
+绘字系统.c(62): error C202: 'io_LCD12864_EN': undefined identifier
+Target not created
+Rebuild target 'Target 1'
+compiling 绘字系统.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_V_LCD12864DRAWPICTURE_F?________
+Program Size: data=14.0 xdata=0 code=506
+creating hex file from "绘字系统"...
+"绘字系统" - 0 Error(s), 1 Warning(s).
+Rebuild target 'Target 1'
+compiling 绘字系统.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_V_LCD12864DRAWPICTURE_F?________
+Program Size: data=14.0 xdata=0 code=506
+creating hex file from "绘字系统"...
+"绘字系统" - 0 Error(s), 1 Warning(s).
+Rebuild target 'Target 1'
+compiling 绘字系统.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_V_LCD12864DRAWPICTURE_F?________
+Program Size: data=14.0 xdata=0 code=506
+creating hex file from "绘字系统"...
+"绘字系统" - 0 Error(s), 1 Warning(s).
+Rebuild target 'Target 1'
+compiling 绘字系统.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_V_LCD12864DRAWPICTURE_F?________
+Program Size: data=14.0 xdata=0 code=506
+creating hex file from "绘字系统"...
+"绘字系统" - 0 Error(s), 1 Warning(s).

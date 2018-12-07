@@ -1,0 +1,31 @@
+Added Pin To Net: NetName=VCC Pin=J1-1
+Added Pin To Net: NetName=GND Pin=J1-2
+Added Pin To Net: NetName=GND Pin=P1s-5
+Added Pin To Net: NetName=GND Pin=P1x-5
+Change Net Name : Old Net Name=GND New Net Name=INH
+Added Pin To Net: NetName=X1 Pin=HCF4051-13
+Added Pin To Net: NetName=X1 Pin=J1-3
+Added Net: Name=X1
+Added Pin To Net: NetName=X2 Pin=HCF4051-14
+Added Pin To Net: NetName=X2 Pin=J1-4
+Added Net: Name=X2
+Added Pin To Net: NetName=X3 Pin=HCF4051-15
+Added Pin To Net: NetName=X3 Pin=J1-5
+Added Net: Name=X3
+Added Pin To Net: NetName=X4 Pin=HCF4051-12
+Added Pin To Net: NetName=X4 Pin=J1-6
+Added Net: Name=X4
+Added Pin To Net: NetName=X5 Pin=HCF4051-1
+Added Pin To Net: NetName=X5 Pin=J1-7
+Added Net: Name=X5
+Added Pin To Net: NetName=X6 Pin=HCF4051-5
+Added Pin To Net: NetName=X6 Pin=J1-8
+Added Net: Name=X6
+Added Pin To Net: NetName=X7 Pin=HCF4051-2
+Added Pin To Net: NetName=X7 Pin=J1-9
+Added Net: Name=X7
+Added Pin To Net: NetName=X8 Pin=HCF4051-4
+Added Pin To Net: NetName=X8 Pin=J1-10
+Added Net: Name=X8
+Added Member To Class: ClassName=HCF4051 Member=Component J3 CON2
+Added Room: Name=HCF4051

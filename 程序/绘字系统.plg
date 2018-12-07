@@ -1,0 +1,18 @@
+<html>
+<body>
+<pre>
+<h1>礦ision Build Log</h1>
+<h2>Project:</h2>
+D:\Users\leo\我的工作台\dxp\广西区赛\绘字系统\程序\绘字系统.uvproj
+Project File Date:  05/09/2013
+
+<h2>Output:</h2>
+Rebuild target 'Target 1'
+compiling 绘字系统.c...
+绘字系统.c(258): warning C291: not every exit path returns a value
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAYNMS?________
+Program Size: data=48.1 xdata=0 code=1070
+creating hex file from "绘字系统"...
+"绘字系统" - 0 Error(s), 2 Warning(s).

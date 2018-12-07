@@ -1,0 +1,188 @@
+C51 COMPILER V9.50a   ________                                                             05/16/2015 23:11:02 PAGE 1   
+
+
+C51 COMPILER V9.50a, COMPILATION OF MODULE ________
+OBJECT MODULE PLACED IN 绘字系统.OBJ
+COMPILER INVOKED BY: C:\Program Files\keil\C51\C51\BIN\C51.EXE 绘字系统.c BROWSE DEBUG OBJECTEXTEND TABS(2)
+
+line level    source
+
+   1          #include"STC12C5A60S2.h" 
+   2          #include<intrins.h> 
+   3          
+   4          sbit     BMA    = P2^2;//编码开关A引脚
+   5          sbit     BMB    = P2^1;//编码开关B引脚
+   6          sbit     BMC    = P2^0;//编码开关 下按引脚
+   7          sbit     LED    = P3^5;
+   8          sbit io_LCD12864_RS = P2^5 ;
+   9          sbit io_LCD12864_RW = P2^6 ;
+  10          sbit io_LCD12864_EN = P2^7 ;
+  11          
+  12          #define io_LCD12864_DATAPORT P0
+  13          #define SET_DATA  io_LCD12864_RS = 1 ;
+  14          #define SET_INC  io_LCD12864_RS = 0 ;
+  15          #define SET_READ  io_LCD12864_RW = 1 ;
+  16          #define SET_WRITE io_LCD12864_RW = 0 ;
+  17          #define SET_EN    io_LCD12864_EN = 1 ;
+  18          #define CLR_EN    io_LCD12864_EN = 0 ;
+  19          
+  20          
+  21          void v_Lcd12864CheckBusy_f( void )      //忙检测函数
+  22          {
+  23   1          unsigned int nTimeOut = 0 ;
+  24   1          SET_INC
+  25   1          SET_READ
+  26   1          CLR_EN
+  27   1          SET_EN
+  28   1          while( ( io_LCD12864_DATAPORT & 0x80 ) && ( ++nTimeOut != 0 ) ) ; //最高位为0时表允许
+  29   1          CLR_EN
+  30   1          SET_INC
+  31   1          SET_READ
+  32   1      }
+  33          
+  34          void v_Lcd12864SendCmd_f( unsigned char byCmd )      //发送命令
+  35          {
+  36   1          v_Lcd12864CheckBusy_f() ;
+  37   1          SET_INC
+  38   1          SET_WRITE
+  39   1          CLR_EN
+  40   1          io_LCD12864_DATAPORT = byCmd ;
+  41   1          _nop_();
+  42   1          _nop_();
+  43   1          SET_EN  
+  44   1          _nop_();
+  45   1          _nop_();
+  46   1          CLR_EN
+  47   1          SET_READ
+  48   1          SET_INC
+  49   1      }
+  50          void v_Lcd12864SendData_f( unsigned char byData )    //发送数据
+  51          {
+  52   1          v_Lcd12864CheckBusy_f() ;
+  53   1          SET_DATA
+  54   1          SET_WRITE
+  55   1          CLR_EN
+C51 COMPILER V9.50a   ________                                                             05/16/2015 23:11:02 PAGE 2   
+
+  56   1          io_LCD12864_DATAPORT = byData ;
+  57   1          _nop_();
+  58   1          _nop_();
+  59   1          SET_EN  
+  60   1          _nop_();
+  61   1          _nop_();
+  62   1          CLR_EN
+  63   1          SET_READ
+  64   1          SET_INC
+  65   1      }
+  66          
+  67          void v_DelayMs_f( unsigned int nDelay )              //n毫秒延时
+  68          {
+  69   1          unsigned int i ;
+  70   1          for( ; nDelay > 0 ; nDelay-- )
+  71   1          {
+  72   2              for( i = 125 ; i > 0 ; i-- ) ;
+  73   2          }
+  74   1      }
+  75          
+  76          void v_Lcd12864Init_f( void )                  //初始化
+  77          {
+  78   1          v_Lcd12864SendCmd_f( 0x30 ) ;              //基本指令集  功能设定 8位数据 无扩充指令
+  79   1          v_DelayMs_f( 50 ) ;
+  80   1          v_Lcd12864SendCmd_f( 0x01 ) ;              //清屏
+  81   1          v_DelayMs_f( 50 ) ;
+  82   1          v_Lcd12864SendCmd_f( 0x06 ) ;              //光标右移
+  83   1          v_DelayMs_f( 50 ) ;
+  84   1          v_Lcd12864SendCmd_f( 0x0c ) ;              //开显示 关游标
+  85   1      }
+  86          void v_Lcd12864SetAddress_f( unsigned char x, y )  //地址转换   x是列数，y是行数 共8列4行
+  87          {
+  88   1          unsigned char byAddress ;
+  89   1          switch( y )
+  90   1          {
+  91   2              case 0 :    byAddress = 0x80 + x ;
+  92   2                  break;
+  93   2              case 1 :    byAddress = 0x90 + x ;
+  94   2                  break ;
+  95   2              case 2 :    byAddress = 0x88 + x ;
+  96   2                  break ;
+  97   2              case 3 :    byAddress = 0x98 + x ;
+  98   2                  break ;
+  99   2              default :
+ 100   2                  break ;
+ 101   2          }
+ 102   1          v_Lcd12864SendCmd_f( byAddress ) ;
+ 103   1      }
+ 104          void v_Lcd12864PutString_f( unsigned char x, unsigned char y, unsigned char *pData )
+ 105          {
+ 106   1          v_Lcd12864SetAddress_f( x, y ) ;
+ 107   1          while( *pData != '\0' )
+ 108   1          {
+ 109   2              v_Lcd12864SendData_f( *pData++ ) ;
+ 110   2          }            
+ 111   1      
+ 112   1      }
+ 113          
+ 114          //显示整屏图像的函数
+ 115          void v_Lcd12864DrawPicture_f( unsigned char code *pPicture )
+ 116          {
+ 117   1          unsigned char i, j, k ;
+C51 COMPILER V9.50a   ________                                                             05/16/2015 23:11:02 PAGE 3   
+
+ 118   1          for( i = 0 ; i < 2 ; i++ )//分上下两屏写
+ 119   1          {
+ 120   2              for( j = 0 ; j < 32 ; j++ )//行
+ 121   2              {
+ 122   3                  v_Lcd12864SendCmd_f( 0x80 + j ) ;//写Y坐标（第几行上写）
+ 123   3                  if( i == 0 )                    //写X坐标  （判断在那一屏上）
+ 124   3                  {
+ 125   4                      v_Lcd12864SendCmd_f( 0x80 ) ;
+ 126   4                  }
+ 127   3                  else
+ 128   3                  {
+ 129   4                      v_Lcd12864SendCmd_f( 0x88 ) ;
+ 130   4                  }
+ 131   3                  for( k = 0 ; k < 16 ; k++ )      //写一整行数据（一行共16个字节，合八个字符）
+ 132   3                  {
+ 133   4                      v_Lcd12864SendData_f( *pPicture++ ) ;
+ 134   4                  }
+ 135   3              }
+ 136   2          }
+ 137   1          v_Lcd12864SendCmd_f( 0x30 ) ;//基本功能设置
+ 138   1      }
+ 139          
+ 140          
+ 141          void main( void )
+ 142          {
+ 143   1        while( 1 )
+ 144   1        {
+ 145   2          v_Lcd12864Init_f() ;
+ 146   2      
+ 147   2          v_Lcd12864PutString_f( 0,0, "电子工程师之家") ;
+ 148   2        v_DelayMs_f( 6000 );
+ 149   2          v_Lcd12864PutString_f( 1,1, "欢迎光临") ;
+ 150   2          v_Lcd12864PutString_f( 2,2, "英文无法显示") ;
+ 151   2          v_Lcd12864PutString_f( 0,3, "★○◇◆※☆■△") ;
+ 152   2          v_DelayMs_f( 10000 );
+ 153   2        v_Lcd12864SendCmd_f(0x01) ;//3秒后清除显示
+ 154   2        v_DelayMs_f( 6000 );
+ 155   2        v_Lcd12864SendCmd_f(0x02) ;//地址归位
+ 156   2        v_Lcd12864PutString_f( 0,0, "★○◇◆※☆■△") ;
+ 157   2        v_DelayMs_f( 6000 );
+ 158   2        v_Lcd12864PutString_f( 1,0, "英文无法显示") ;
+ 159   2        v_DelayMs_f( 6000 );
+ 160   2        }
+ 161   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    412    ----
+   CONSTANT SIZE    =     54    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       5
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

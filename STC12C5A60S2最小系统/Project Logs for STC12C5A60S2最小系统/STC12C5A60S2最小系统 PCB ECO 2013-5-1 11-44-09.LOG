@@ -1,0 +1,43 @@
+Change Component DesignItemId : Designator=C3 Old DesignItemId= New DesignItemId=CAP1
+Change Component DesignItemId : Designator=C4 Old DesignItemId= New DesignItemId=CAP1
+Change Component DesignItemId : Designator=C5 Old DesignItemId= New DesignItemId=CAP1
+Change Component DesignItemId : Designator=C1 Old DesignItemId= New DesignItemId=CAP3
+Change Component DesignItemId : Designator=C2 Old DesignItemId= New DesignItemId=CAP3
+Change Component DesignItemId : Designator=D1 Old DesignItemId= New DesignItemId=LED
+Change Component DesignItemId : Designator=D2 Old DesignItemId= New DesignItemId=LED
+Change Component DesignItemId : Designator=R2 Old DesignItemId= New DesignItemId=RES
+Change Component DesignItemId : Designator=R3 Old DesignItemId= New DesignItemId=RES
+Change Component DesignItemId : Designator=R4 Old DesignItemId= New DesignItemId=RES
+Change Component DesignItemId : Designator=S2 Old DesignItemId= New DesignItemId=SW-DPDT
+Change Component DesignItemId : Designator=S1 Old DesignItemId= New DesignItemId=SW-PB
+Change Component DesignItemId : Designator=S3 Old DesignItemId= New DesignItemId=SW-PB
+Change Component DesignItemId : Designator=S4 Old DesignItemId= New DesignItemId=SW-PB
+Change Component DesignItemId : Designator=MCU Old DesignItemId=STC12C New DesignItemId=STC12C5AXXS2
+Change Component Designator: OldDesignator=R2 NewDesignator=R5
+Change Component Description : Designator=JZ Old Description=6.0000 8.000  11.0592  12.0000 New Description=6.0000 8.000  11.0592  12.0000 24.000
+Change Component Description : Designator=J1 Old Description=Co New Description=Connector
+Change Component Description : Designator=J2 Old Description=Co New Description=Connector
+Change Component Description : Designator=J3 Old Description=Co New Description=Connector
+Change Component Description : Designator=J4 Old Description=Co New Description=Connector
+Change Component Description : Designator=P0 Old Description=Co New Description=Connector
+Change Component Description : Designator=P1 Old Description=Co New Description=Connector
+Change Component Description : Designator=P2 Old Description=Co New Description=Connector
+Change Component Description : Designator=P3 Old Description=Co New Description=Connector
+Change Component Description : Designator=P4 Old Description=Co New Description=Connector
+Added Component: Designator=J5(SIP-1)
+Added Component: Designator=J6(SIP-1)
+Added Component: Designator=R1(AXIAL0.3)
+Added Component: Designator=R2(AXIAL0.3)
+Added Pin To Net: NetName=P13 Pin=R1-1
+Added Pin To Net: NetName=P14 Pin=R2-1
+Added Pin To Net: NetName=PWM0 Pin=J5-1
+Added Pin To Net: NetName=PWM0 Pin=R1-2
+Added Net: Name=PWM0
+Added Pin To Net: NetName=PWM1 Pin=J6-1
+Added Pin To Net: NetName=PWM1 Pin=R2-2
+Added Net: Name=PWM1
+Added Member To Class: ClassName=STC12C5A60S2最小系统 Member=Component J5 CON1
+Added Member To Class: ClassName=STC12C5A60S2最小系统 Member=Component J6 CON1
+Added Member To Class: ClassName=STC12C5A60S2最小系统 Member=Component R1 RES
+Added Member To Class: ClassName=STC12C5A60S2最小系统 Member=Component R5 10K
+Added Room: Name=STC12C5A60S2最小系统
